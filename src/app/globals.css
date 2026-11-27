@@ -1,26 +1,209 @@
+@layer theme, base, mui, components, utilities;
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --bis-bg: #f1f4f8;
+  --bis-surface: #ffffff;
+  --bis-surface-subtle: #f8fafc;
+  --bis-accent: #173b63;
+  --bis-accent-hover: #112c4a;
+  --bis-accent-soft: rgba(23, 59, 99, 0.08);
+  --bis-accent-contrast: #ffffff;
+  --bis-highlight: #d69a38;
+  --bis-highlight-hover: #c08627;
+  --bis-highlight-soft: rgba(214, 154, 56, 0.14);
+  --bis-amber: #8a5a10;
+  --bis-amber-hover: #6e460b;
+  --bis-amber-soft: rgba(214, 154, 56, 0.14);
+  --bis-navy-deep: #0f213b;
+  --bis-navy-elevated: #172e4f;
+  --bis-sidebar-bg: #173b63;
+  --bis-sidebar-surface: #122f50;
+  --bis-sidebar-border: rgba(255, 255, 255, 0.12);
+  --bis-sidebar-text: #ffffff;
+  --bis-sidebar-muted: #cbd5e1;
+  --bis-sidebar-hover: rgba(255, 255, 255, 0.09);
+  --bis-sidebar-active-bg: rgba(255, 255, 255, 0.15);
+  --bis-sidebar-active-text: #ffffff;
+  --bis-text-primary: #1e293b;
+  --bis-text-secondary: #64748b;
+  --bis-border: #e2e8f0;
+  --bis-border-strong: #cbd5e1;
+  --bis-success: #15803d;
+  --bis-success-soft: rgba(21, 128, 61, 0.1);
+  --bis-warning: #8a5a10;
+  --bis-warning-soft: rgba(214, 154, 56, 0.14);
+  --bis-danger: #b91c1c;
+  --bis-danger-soft: rgba(185, 28, 28, 0.1);
+  --bis-shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --bis-shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --bis-chart-primary: #173b63;
+  --bis-chart-secondary: #4372a6;
+  --bis-chart-tertiary: #7ca4d4;
+  --bis-chart-quaternary: #94a3b8;
+  --bis-chart-grid: #e2e8f0;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bis-bg: #111827;
+  --bis-surface: #1e293b;
+  --bis-surface-subtle: #172031;
+  --bis-accent: #5285c1;
+  --bis-accent-hover: #6696ce;
+  --bis-accent-soft: rgba(82, 133, 193, 0.16);
+  --bis-accent-contrast: #0f172a;
+  --bis-highlight: #e0aa50;
+  --bis-highlight-hover: #ebc075;
+  --bis-highlight-soft: rgba(224, 170, 80, 0.16);
+  --bis-amber: #e0aa50;
+  --bis-amber-hover: #ebc075;
+  --bis-amber-soft: rgba(224, 170, 80, 0.16);
+  --bis-navy-deep: #0b1628;
+  --bis-navy-elevated: #15253e;
+  --bis-sidebar-bg: #0c1626;
+  --bis-sidebar-surface: #111f36;
+  --bis-sidebar-border: #1e293b;
+  --bis-sidebar-text: #f1f5f9;
+  --bis-sidebar-muted: #94a3b8;
+  --bis-sidebar-hover: rgba(255, 255, 255, 0.07);
+  --bis-sidebar-active-bg: rgba(82, 133, 193, 0.22);
+  --bis-sidebar-active-text: #ffffff;
+  --bis-text-primary: #f1f5f9;
+  --bis-text-secondary: #94a3b8;
+  --bis-border: #334155;
+  --bis-border-strong: #475569;
+  --bis-success: #4ade80;
+  --bis-success-soft: rgba(74, 222, 128, 0.14);
+  --bis-warning: #e0aa50;
+  --bis-warning-soft: rgba(224, 170, 80, 0.16);
+  --bis-danger: #f87171;
+  --bis-danger-soft: rgba(248, 113, 113, 0.14);
+  --bis-shadow-sm: 0 1px 2px 0 rgba(2, 6, 23, 0.35);
+  --bis-shadow-md: 0 8px 20px -4px rgba(2, 6, 23, 0.5), 0 2px 6px -2px rgba(2, 6, 23, 0.35);
+  --bis-chart-primary: #5285c1;
+  --bis-chart-secondary: #7ca4d4;
+  --bis-chart-tertiary: #3b699e;
+  --bis-chart-quaternary: #64748b;
+  --bis-chart-grid: #334155;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bis-bg: var(--bis-bg);
+  --color-bis-surface: var(--bis-surface);
+  --color-bis-surface-subtle: var(--bis-surface-subtle);
+  --color-bis-accent: var(--bis-accent);
+  --color-bis-accent-hover: var(--bis-accent-hover);
+  --color-bis-accent-soft: var(--bis-accent-soft);
+  --color-bis-accent-contrast: var(--bis-accent-contrast);
+  --color-bis-highlight: var(--bis-highlight);
+  --color-bis-highlight-hover: var(--bis-highlight-hover);
+  --color-bis-highlight-soft: var(--bis-highlight-soft);
+  --color-bis-amber: var(--bis-amber);
+  --color-bis-amber-hover: var(--bis-amber-hover);
+  --color-bis-amber-soft: var(--bis-amber-soft);
+  --color-bis-navy-deep: var(--bis-navy-deep);
+  --color-bis-navy-elevated: var(--bis-navy-elevated);
+  --color-bis-sidebar: var(--bis-sidebar-bg);
+  --color-bis-sidebar-surface: var(--bis-sidebar-surface);
+  --color-bis-sidebar-border: var(--bis-sidebar-border);
+  --color-bis-sidebar-text: var(--bis-sidebar-text);
+  --color-bis-sidebar-muted: var(--bis-sidebar-muted);
+  --color-bis-sidebar-hover: var(--bis-sidebar-hover);
+  --color-bis-sidebar-active-bg: var(--bis-sidebar-active-bg);
+  --color-bis-sidebar-active-text: var(--bis-sidebar-active-text);
+  --color-bis-text: var(--bis-text-primary);
+  --color-bis-muted: var(--bis-text-secondary);
+  --color-bis-border: var(--bis-border);
+  --color-bis-border-strong: var(--bis-border-strong);
+  --color-bis-success: var(--bis-success);
+  --color-bis-success-soft: var(--bis-success-soft);
+  --color-bis-warning: var(--bis-warning);
+  --color-bis-warning-soft: var(--bis-warning-soft);
+  --color-bis-danger: var(--bis-danger);
+  --color-bis-danger-soft: var(--bis-danger-soft);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html,
+  body {
+    background-color: var(--bis-bg);
+    color: var(--bis-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Subtle, accessible scrollbar aligned with slate surfaces */
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--bis-border-strong);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--bis-text-secondary);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media print {
+  @page {
+    size: auto;
+    margin: 14mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  .bis-no-print {
+    display: none !important;
+  }
+
+  body[data-bis-printing='true'] > *:not(.MuiModal-root):not(.bis-print-root) {
+    display: none !important;
+  }
+
+  body[data-bis-printing='true'] .MuiBackdrop-root {
+    display: none !important;
+  }
+
+  body[data-bis-printing='true'] .MuiDialog-container {
+    display: block !important;
+    height: auto !important;
+  }
+
+  body[data-bis-printing='true'] .MuiDialog-paper {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: none !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  .bis-printable-sheet {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
 }
